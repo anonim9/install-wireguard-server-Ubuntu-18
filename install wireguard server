@@ -1,0 +1,43 @@
+sudo apt update
+
+sudo apt upgrade
+
+sudo add-apt-repository ppa:wireguard/wireguard
+
+sudo apt-get update
+
+sudo apt-get install wireguard
+
+sudo apt-get install mawk grep iproute2 qrencode
+
+wget https://raw.githubusercontent.com/burghardt/easy-wg-quick/master/easy-wg-quick
+
+nano /etc/sysctl.conf
+
+
+#net.ipv4.ip_forward = 1 
+net.ipv4.ip_forward = 1
+Ctrl+C
+Ctrl+X
+
+
+ sysctl -p
+ 
+ 
+net.ipv4.ip_forward = 1
+
+
+chmod +x easy-wg-quick
+
+./easy-wg-quick
+
+cat wgclient_10.conf
+
+cp wghub.conf /etc/wireguard/wghub.conf 
+
+systemctl enable wg-quick@wghub
+
+systemctl start wg-quick@wghub
+
+wg show
+
